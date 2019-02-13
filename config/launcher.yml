@@ -1,0 +1,15 @@
+children:
+  Applications:
+    Atom: "atom"
+    Firefox: "firefox"
+    Firefox (Private window): "firefox --private-window www.duckduckgo.com"
+    Package Manager: "$packageManager"
+    Terminal: "$terminal"
+  Awesome:
+    Hotkeys: "#hotkeys"
+    Edit: "$editor ~/.config/awesome"
+    Restart: "#restart"
+  System:
+    Shutdown: "shutdown -P"
+    Reboot: "reboot"
+    Halt: "shutdown -H"

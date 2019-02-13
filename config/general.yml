@@ -1,0 +1,4 @@
+commands:
+  terminal: "xfce4-terminal"
+  editor: "atom"
+  packageManager: "pamac-manager"

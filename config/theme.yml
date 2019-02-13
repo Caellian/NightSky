@@ -1,0 +1,101 @@
+common:
+  font: "Play 10"
+  wallpaper: "~/.config/awesome/theme/graphics/background.svg"
+  icon_theme: "/usr/share/icons/Papirus"
+
+  scheme:
+    preset:
+      primary: "#0079f6"
+      secondary: "#00e7f6"
+
+    background:
+      normal: "#111111"
+      hover: "#222222"
+      focus: "#222222"
+      urgent: "#333333"
+      minimize: "#1b2024"
+      systray: "#111111"
+
+      red: "#d04646"
+      green: "#60bd5c"
+      blue: "#63a2bd"
+      yellow: "#e2fe5b"
+      cyan: "#347872"
+
+    foreground:
+      normal: "#007dff"
+      hover: "#007dff"
+      focus: "#3194fa"
+      urgent: "#78b2ff"
+      minimize: "#b0b0b0"
+
+      red: "#d71e1e"
+      green: "#04b000"
+      blue: "#1f3fe6"
+      yellow: "#b2d410"
+      cyan: "#0c3350"
+
+    widget:
+      background:
+        normal: "#111111"
+        hover: "#222222"
+        focus: "#222222"
+        urgent: "#333333"
+        shadow: "#000000ee"
+
+        red: "#d04646"
+        green: "#60bd5c"
+        blue: "#63a2bd"
+        yellow: "#e2fe5b"
+        cyan: "#1470b4"
+
+      foreground:
+        normal: "#007dff"
+        hover: "#007dff"
+        focus: "#3194fa"
+        urgent: "#78b2ff"
+
+        red: "#d71e1e"
+        green: "#04b000"
+        blue: "#1f3fe6"
+        yellow: "#b2d410"
+        cyan: "#0c3350"
+
+  classes:
+    - dark
+
+dark:
+  bg_normal: "$background.normal"
+  bg_hover: "$background.hover"
+  bg_focus: "$background.focus"
+  bg_urgent: "$background.urgent"
+  bg_minimize: "$background.minimize"
+  bg_systray: "$background.systray"
+
+  fg_normal: "$foreground.normal"
+  fg_hover: "$foreground.hover"
+  fg_focus: "$foreground.focus"
+  fg_urgent: "$foreground.urgent"
+  fg_minimize: "$foreground.minimize"
+
+  border_normal: "$background.normal"
+  border_focus: "$background.focus"
+  border_marked: "$background.focus"
+
+light:
+  bg_normal: "#00a7dd"
+  bg_hover: "#2fa4c9"
+  bg_focus: "#2fa4c9"
+  bg_urgent: "#d24b21"
+  bg_minimize: "#d1b641"
+  bg_systray: "#00a7dd"
+
+  fg_normal: "#111111"
+  fg_hover: "#222222"
+  fg_focus: "#222222"
+  fg_urgent: "#444444"
+  fg_minimize: "#b0b0b0"
+
+  border_normal: "#111111"
+  border_focus: "#222222"
+  border_marked: "#3194fa"

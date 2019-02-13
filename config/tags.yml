@@ -1,0 +1,30 @@
+1:
+  name: "Development"
+  icon: "/home/caellian/.config/awesome/theme/graphics/code.svg"
+  layout: "awful.layout.suit.tile"
+  selected: true
+
+2:
+  name: "Documentation"
+  icon: "/home/caellian/.config/awesome/theme/graphics/file.svg"
+  layout: "awful.layout.suit.tile"
+
+3:
+  name: "Browser"
+  icon: "/home/caellian/.config/awesome/theme/graphics/firefox.svg"
+  layout: "awful.layout.suit.corner.nw"
+
+4:
+  name: "Entertainment"
+  icon: "/home/caellian/.config/awesome/theme/graphics/movie.svg"
+  layout: "awful.layout.suit.tile"
+
+5:
+  name: "Games"
+  icon: "/home/caellian/.config/awesome/theme/graphics/controller.svg"
+  layout: "awful.layout.suit.tile"
+
+6:
+  name: "Social"
+  icon: "/home/caellian/.config/awesome/theme/graphics/chat.svg"
+  layout: "awful.layout.suit.tile"
