@@ -4,7 +4,7 @@ versionHistory:
     minor: 0
     patch: 2
     main: "Updatedness"
-    description: "- Added new update widget which updates your config automatically."
+    description: "- Added new widget which checks for updates."
   - major: 0
     minor: 0
     patch: 1

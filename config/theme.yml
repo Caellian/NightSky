@@ -28,7 +28,7 @@ common:
       blue: "#63a2bd"
       yellow: "#e2fe5b"
       cyan: "#347872"
-      purple: "#7e297b"
+      purple: "#835a82"
 
     foreground:
       normal: "#007dff"
@@ -37,12 +37,12 @@ common:
       urgent: "#78b2ff"
       minimize: "#b0b0b0"
 
-      red: "#d71e1e"
-      green: "#04b000"
+      red: "#790a0a"
+      green: "#025d00"
       blue: "#1f3fe6"
-      yellow: "#b2d410"
+      yellow: "#443f04"
       cyan: "#0c3350"
-      purple: "#461344"
+      purple: "#451843"
 
     widget:
       background:
