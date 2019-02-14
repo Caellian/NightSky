@@ -11,10 +11,12 @@ do
       if in_error then return end
       in_error = true
 
+      require("module.data")
+
       naughty.notify({ preset = naughty.config.presets.critical,
                        title = "Error!",
                        text = tostring(err) })
-        in_error = false
+      in_error = false
     end
   )
 end

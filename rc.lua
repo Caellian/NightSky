@@ -176,6 +176,8 @@ awful.screen.connect_for_each_screen(function(s)
       bottom
     )
 
+    local update_widget = require("widgets.update_notifier")
+
     -- Add widgets to the wibox
     top:setup {
         layout = wibox.layout.align.horizontal,
@@ -190,6 +192,7 @@ awful.screen.connect_for_each_screen(function(s)
             volume_widget,
             brightness_widget,
             battery_widget,
+            update_widget,
             mytextclock,
         },
     }

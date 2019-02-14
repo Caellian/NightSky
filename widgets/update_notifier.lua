@@ -2,21 +2,19 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local wibox = require("wibox")
+local spawn = require("awful.spawn")
 local watch = require("awful.widget.watch")
 
 local yaml = require("yaml")
 
 local config = require("module.config")
 
-local current_icon = beautiful.icons.widget.updater.no
+require("module.data_dumper")
 
 local indicator = wibox.widget {
-    image = function() return current_icon end,
+    image = beautiful.icons.widget.updater.no,
     resize = false,
-    widget = wibox.widget.imagebox,
-    set_value = function(self, value)
-        self.value = value
-    end,
+    widget = wibox.widget.imagebox
 }
 
 local update_notifier_widget = wibox.widget {
@@ -25,18 +23,32 @@ local update_notifier_widget = wibox.widget {
 }
 
 function updateInfo()
+  naughty.notify({ preset = naughty.config.presets.critical,
+                   title = "HERE",
+                   text = "1"})
+
   spawn.easy_async("curl " .. config.versions_url, function(stdout, stderr, exitreason, exitcode)
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "HERE",
+                     text = stdout})
     local versions = yaml.load(stdout)
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "HERE",
+                     text = DataDumper(versions)})
     local latestVersion = versions.latestVersion
 
     -- Find the latest version object.
     -- This for loop should only need to iterate over the first element because
     -- the latest version is on top of the list.
     for i,version in ipairs(versions.versionHistory) do
-      if (latestVersion == version.major .. "." .. version.minor .. "." .. version.patch) {
+      if latestVersion == version.major .. "." .. version.minor .. "." .. version.patch then
         latestVersion = version
-      }
+      end
     end
+
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "LATEST",
+                     text = tostring(DataDumper(latestVersion)) })
 
     if type(latestVersion) == "string" then
       -- Badly formatted versions file - latest update isn't in version history.
@@ -86,5 +98,7 @@ function showUpdateNotification(update, update_type)
     }
   end
 end
+
+updateInfo()
 
 return update_notifier_widget

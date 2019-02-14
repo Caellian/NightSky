@@ -1,16 +1,12 @@
 latestVersion: "0.0.2"
 versionHistory:
-  - {
-    major: 0
+  - major: 0
     minor: 0
     patch: 2
     main: "Updatedness"
     description: "- Added new update widget which updates your config automatically."
-    }
-  - {
-    major: 0
+  - major: 0
     minor: 0
     patch: 1
     main: "Initial release"
     description: "Hello World"
-    }

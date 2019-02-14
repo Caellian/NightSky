@@ -6,7 +6,7 @@ common:
   icons:
     widget:
       updater:
-        no: "~/.config/awesome/theme/icons/no-update.svg"
+        no: "~/.config/awesome/theme/graphics/firefox.svg"
         yes: "~/.config/awesome/theme/icons/update.svg"
         checking: "~/.config/awesome/theme/icons/loading.svg"
 
