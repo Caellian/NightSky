@@ -1,11 +1,3 @@
--------------------------------------------------
--- Brightness Arc for brightness display.
--- Supports xflux.
-
--- @author Pavel Makhov, Caellian
--- @copyright 2019 Caellian
--------------------------------------------------
-
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local watch = require("awful.widget.watch")

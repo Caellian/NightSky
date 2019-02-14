@@ -1,13 +1,3 @@
--------------------------------------------------
--- Volume Arc Widget for Awesome Window Manager
--- Shows the current volume level
--- More details could be found here:
--- 
-
--- @author Pavel Makhov, Caellian
--- @copyright 2019 Caellian
--------------------------------------------------
-
 local awful = require("awful")
 local beautiful = require("beautiful")
 local spawn = require("awful.spawn")

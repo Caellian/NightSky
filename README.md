@@ -21,7 +21,7 @@ the configuration but the configuration should still load and work.
 ## Attribution
 
 Pamel Makhov is the original author of Battery, Brightness & Volume widgets
-which can be found [here](https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumearc-widget).
+which can be found [here](https://github.com/streetturtle/awesome-wm-widgets).
 
 ## License
 
