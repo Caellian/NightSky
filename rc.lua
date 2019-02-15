@@ -17,6 +17,10 @@ beautiful.init(require("theme"))
 
 local launcher = require("module.launcher")
 
+local config = require("module.config")
+
+require("module.autostart")
+
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
 terminal = "xfce4-terminal"
@@ -321,7 +325,25 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Custom
+    awful.key({ modkey }, "i", function() awful.spawn(config.package_manager) end,
+              {description = "open the package manager", group = "launcher"}),
+
+    awful.key({ modkey }, "e", function() awful.spawn(config.file_manager) end,
+              {description = "open the file manager", group = "launcher"}),
+
+    awful.key({ modkey, "Control" }, "t", function() awful.spawn(config.terminal) end,
+              {description = "open terminal emulator", group = "launcher"}),
+
+    awful.key({ "Control", "Shift" }, "F1", function() awful.spawn("/home/caellian/script/togglePalmcheck.sh") end,
+              {description = "toggle palmcheck", group = "tweaks"}),
+
+    awful.key({}, "Print", function() awful.spawn("xfce4-screenshooter") end,
+              {description = "open screenshooter app", group = "tweaks"}),
+
+    awful.key({ modkey, "Control" }, "u", function() awful.spawn(config.terminal .. " -x pamac -Syyu; yaourt -Syyu --noconfirm") end,
+              {description = "start system update", group = "launcher"})
 )
 
 clientkeys = gears.table.join(

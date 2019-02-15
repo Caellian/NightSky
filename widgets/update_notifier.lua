@@ -1,18 +1,23 @@
+local awesome = require("awesome")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local wibox = require("wibox")
-local spawn = require("awful.spawn")
 local watch = require("awful.widget.watch")
 
 local yaml = require("yaml")
 
 local config = require("module.config")
 
+local shouldUpdate = false
+
 local indicator = wibox.widget {
-    image = beautiful.icons.widget.updater.no,
-    resize = false,
+  {
+    id = "icon",
+    image = "/home/caellian/.config/awesome/theme/icons/no-update.svg", --beautiful.icons.widget.updater.no,
     widget = wibox.widget.imagebox
+  },
+  layout = wibox.container.margin
 }
 
 local update_notifier_widget = wibox.widget {
@@ -21,7 +26,7 @@ local update_notifier_widget = wibox.widget {
 }
 
 function updateInfo()
-  spawn.easy_async("curl " .. config.versions_url, function(stdout, stderr, exitreason, exitcode)
+  awful.spawn.easy_async("curl " .. config.versions_url, function(stdout, stderr, exitreason, exitcode)
     local versions = yaml.load(stdout)
     local latestVersion = versions.latestVersion
 
@@ -42,16 +47,21 @@ function updateInfo()
                        text = "Versions file is badly formatted." })
     else
       if config.version.major < latestVersion.major then
+        indicator.icon.image = "/home/caellian/.config/awesome/theme/icons/update.svg"
         showUpdateNotification(latestVersion, "major")
+        shouldUpdate = true
       elseif config.version.major == latestVersion.major then
         if config.version.minor < latestVersion.minor then
+          indicator.icon.image = "/home/caellian/.config/awesome/theme/icons/update.svg"
           showUpdateNotification(latestVersion, "minor")
+          shouldUpdate = true
         elseif config.version.minor == latestVersion.minor then
           if config.version.patch < latestVersion.patch then
             showUpdateNotification(latestVersion, "patch")
+            shouldUpdate = true
           elseif config.version.patch == latestVersion.patch then
             showUpdateNotification({
-              name = "Up to date!",
+              main = "Up to date!",
               description = "Version: " .. math.floor(latestVersion.major) .. "." .. math.floor(latestVersion.minor) .. "." .. math.floor(latestVersion.patch)
             }, "none")
             -- else -- Dev version - don't notify
@@ -60,6 +70,9 @@ function updateInfo()
         end
         -- else -- Dev version - don't notify
       end
+      if shouldUpdate then
+        ndicator.icon.image = "/home/caellian/.config/awesome/theme/icons/update.svg"
+      end
     end
   end)
 end
@@ -67,6 +80,12 @@ end
 update_notifier_widget:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
     updateInfo()
+    if shouldUpdate then
+      awful.spawn.easy_async("cd ~/.config/awesome/ && git pull", function(stdout, stderr, exitreason, exitcode)
+        awesome.restart
+        indicator.icon.image = "/home/caellian/.config/awesome/theme/icons/no-update.svg"
+      end)
+    end
   end
 end)
 
@@ -81,7 +100,7 @@ function showUpdateNotification(update, update_type)
       position = "bottom_right",
       bg = beautiful.scheme.background.green,
       fg = beautiful.scheme.foreground.green,
-      width = 300,
+      width = 100,
     }
   elseif update_type == "patch" then
     naughty.notify {
@@ -119,6 +138,6 @@ function showUpdateNotification(update, update_type)
   end
 end
 
-updateInfo()
+-- updateInfo() -- Uncomment to enable checking for updates on start
 
 return update_notifier_widget

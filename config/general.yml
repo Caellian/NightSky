@@ -1,10 +1,11 @@
 commands:
   terminal: "xfce4-terminal"
   editor: "atom"
+  file_manager: "thunar"
   package_manager: "pamac-manager"
 
 versions_url: "https://raw.githubusercontent.com/Caellian/NightSky/master/versions.yml"
 version:
   major: 0
   minor: 0
-  patch: 2
+  patch: 3

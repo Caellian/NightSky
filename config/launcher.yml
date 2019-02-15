@@ -10,6 +10,7 @@ children:
     Edit: "$editor ~/.config/awesome"
     Restart: "#restart"
   System:
-    Shutdown: "shutdown -P"
+    Log out: "xfce4-terminal -x kill $(pidof xfce4-session)"
+    Shutdown: "shutdown -P now"
     Reboot: "reboot"
-    Halt: "shutdown -H"
+    Halt: "shutdown -H now"

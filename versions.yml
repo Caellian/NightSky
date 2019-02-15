@@ -1,5 +1,10 @@
-latestVersion: "0.0.2"
+latestVersion: "0.0.3"
 versionHistory:
+  - major: 0
+    minor: 0
+    patch: 3
+    main: "Autostart"
+    description: "- Added autostart module and configuration file."
   - major: 0
     minor: 0
     patch: 2

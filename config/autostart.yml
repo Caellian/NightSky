@@ -1,0 +1,8 @@
+commands:
+  - /usr/bin/libinput-gestures
+  - xfce4-power-manager
+  - thunar --daemon
+  - pulseaudio
+  - wicd
+  - xfsettingsd
+  - setxkbmap hr
