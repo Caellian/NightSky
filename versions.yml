@@ -1,5 +1,10 @@
-latestVersion: "0.0.3"
+latestVersion: "0.0.4"
 versionHistory:
+  - major: 0
+    minor: 0
+    patch: 4
+    main: "Fixes"
+    description: "- Fixed widgets.\n-Fixed keyboard shortcuts."
   - major: 0
     minor: 0
     patch: 3

@@ -273,7 +273,7 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey, "Control" }, "t", function () awful.spawn(config.commands.terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -327,14 +327,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
     -- Custom
-    awful.key({ modkey }, "i", function() awful.spawn(config.package_manager) end,
+    awful.key({ modkey }, "i", function() awful.spawn(config.commands.package_manager) end,
               {description = "open the package manager", group = "launcher"}),
 
-    awful.key({ modkey }, "e", function() awful.spawn(config.file_manager) end,
+    awful.key({ modkey }, "e", function() awful.spawn(config.commands.file_manager) end,
               {description = "open the file manager", group = "launcher"}),
-
-    awful.key({ modkey, "Control" }, "t", function() awful.spawn(config.terminal) end,
-              {description = "open terminal emulator", group = "launcher"}),
 
     awful.key({ "Control", "Shift" }, "F1", function() awful.spawn("/home/caellian/script/togglePalmcheck.sh") end,
               {description = "toggle palmcheck", group = "tweaks"}),
@@ -342,7 +339,7 @@ globalkeys = gears.table.join(
     awful.key({}, "Print", function() awful.spawn("xfce4-screenshooter") end,
               {description = "open screenshooter app", group = "tweaks"}),
 
-    awful.key({ modkey, "Control" }, "u", function() awful.spawn(config.terminal .. " -x pamac -Syyu; yaourt -Syyu --noconfirm") end,
+    awful.key({ modkey, "Control" }, "u", function() awful.spawn(config.commands.terminal .. " -x yaourt -Syyua --noconfirm") end,
               {description = "start system update", group = "launcher"})
 )
 

@@ -1,4 +1,3 @@
-local awesome = require("awesome")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
@@ -71,7 +70,7 @@ function updateInfo()
         -- else -- Dev version - don't notify
       end
       if shouldUpdate then
-        ndicator.icon.image = "/home/caellian/.config/awesome/theme/icons/update.svg"
+        indicator.icon.image = "/home/caellian/.config/awesome/theme/icons/update.svg"
       end
     end
   end)
@@ -81,10 +80,11 @@ update_notifier_widget:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
     updateInfo()
     if shouldUpdate then
-      awful.spawn.easy_async("cd ~/.config/awesome/ && git pull", function(stdout, stderr, exitreason, exitcode)
-        awesome.restart
+      awful.spawn.easy_async("git pull ~/.config/awesome/", function(stdout, stderr, exitreason, exitcode)
+        awful.spawn.easy_async("awesome -r")
         indicator.icon.image = "/home/caellian/.config/awesome/theme/icons/no-update.svg"
       end)
+      shouldUpdate = false
     end
   end
 end)

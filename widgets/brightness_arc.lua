@@ -36,10 +36,10 @@ function toggleBlueLightFilter()
   spawn.easy_async("pidof xflux", function(stdout, stderr, exitreason, exitcode)
     if stdout == "" then
       spawn("xflux -l 45.328979 -g 14.457664 -k 2000", false)
-      brightnessarc.colors = { beautiful.widget_yellow }
+      brightnessarc.colors = { beautiful.scheme.widget.background.yellow }
     else
       spawn("kill -15 " .. stdout, false)
-      brightnessarc.colors = { beautiful.widget_main_color }
+      brightnessarc.colors = { beautiful.scheme.preset.primary }
     end
   end)
 end
