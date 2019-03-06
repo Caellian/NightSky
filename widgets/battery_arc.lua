@@ -1,10 +1,9 @@
-
-
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local wibox = require("wibox")
 local watch = require("awful.widget.watch")
+local config = require("module.config")
 
 local HOME = os.getenv("HOME")
 
@@ -104,10 +103,15 @@ end
 
 batteryarc_widget:connect_signal("mouse::enter", function() show_battery_status() end)
 batteryarc_widget:connect_signal("mouse::leave", function() naughty.destroy(notification) end)
+batteryarc_widget:connect_signal("button::press", function(_, _, _, button)
+    if (button == 1) then
+      awful.spawn(config.commands.session_logout)
+    end
+end)
 
 function show_battery_warning()
     naughty.notify {
-        text = "Please save your progress and begin approaching the nearest power socket.",
+        text = "Save your progress and begin approaching the nearest power socket.",
         title = "Battery is dying!",
         timeout = 5,
         hover_timeout = 0.5,

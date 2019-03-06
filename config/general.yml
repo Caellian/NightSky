@@ -3,9 +3,11 @@ commands:
   editor: "atom"
   file_manager: "thunar"
   package_manager: "pamac-manager"
+  task_manager: "xfce4-taskmanager"
+  session_logout: "xfce4-session-logout"
 
 versions_url: "https://raw.githubusercontent.com/Caellian/NightSky/master/versions.yml"
 version:
   major: 0
   minor: 0
-  patch: 4
+  patch: 5

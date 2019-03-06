@@ -9,6 +9,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 require("module.error_handler")
@@ -20,12 +21,6 @@ local launcher = require("module.launcher")
 local config = require("module.config")
 
 require("module.autostart")
-
--- {{{ Variable definitions
--- This is used later as the default terminal and editor to run.
-terminal = "xfce4-terminal"
-editor = os.getenv("EDITOR") or "mousepad"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -77,6 +72,8 @@ mytextclock = wibox.widget.textclock()
 local brightness_widget = require("widgets.brightness_arc")
 local volume_widget = require("widgets.volume_arc")
 local battery_widget = require("widgets.battery_arc")
+local ram_widget = require("widgets.ram")
+local cpu_widget = require("widgets.cpu")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -184,34 +181,36 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Add widgets to the wibox
     top:setup {
-        layout = wibox.layout.align.horizontal,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
-        },
-        s.mytasklist,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            volume_widget,
-            brightness_widget,
-            battery_widget,
-            update_widget,
-            mytextclock,
-        },
+      layout = wibox.layout.align.horizontal,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        s.mytaglist,
+      },
+      s.mytasklist,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        wibox.widget.systray(),
+        volume_widget,
+        brightness_widget,
+        battery_widget,
+        update_widget,
+        mytextclock,
+      },
     }
 
     bottom:setup {
-        layout = wibox.layout.align.horizontal,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            launcher,
-        },
-        s.mypromptbox,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            s.mylayoutbox,
-        },
+      layout = wibox.layout.align.horizontal,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        launcher,
+      },
+      s.mypromptbox,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        cpu_widget,
+        ram_widget,
+        s.mylayoutbox,
+      },
     }
 
 end)
@@ -220,7 +219,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () mainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -249,7 +248,7 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () mainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation

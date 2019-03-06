@@ -79,25 +79,9 @@ function traverseNode(node)
   return items
 end
 
--- myawesomemenu = {
---    { "hotkeys", function() return false, hotkeys_popup.show_help end},
---    { "manual", cfg.terminal .. " -e man awesome" },
---    { "edit config", cfg.terminal .. " -e atom /home/caellian/.config/awesome" },
---    { "TEST", function ()
---      -- frame = wx.wxFrame(wx.NULL, wx.wxID_ANY, "wxLua Minimal Demo",
---      --               wx.wxDefaultPosition, wx.wxSize(450, 450),
---      --               wx.wxDEFAULT_FRAME_STYLE)
---    end },
---    { "restart", awesome.restart },
---    { "quit", function() awesome.quit() end}
--- }
+mainmenu = awful.menu({ items = traverseNode(cfg.children) })
 
-mymainmenu = awful.menu({ items = traverseNode(cfg.children) })
+launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                     menu = mainmenu })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
--- Menubar configuration
--- menubar.utils.terminal = lcfg.terminal -- Set the terminal for applications that require it
-
-return mylauncher
+return launcher

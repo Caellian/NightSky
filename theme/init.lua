@@ -94,7 +94,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(25)
-theme.menu_width  = dpi(150)
+theme.menu_width  = dpi(200)
 
 -- You can add as many variables as
 -- you wish and access them by using

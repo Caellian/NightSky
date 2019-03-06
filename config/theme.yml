@@ -23,9 +23,9 @@ common:
 
       red: "#d04646"
       green: "#60bd5c"
-      blue: "#63a2bd"
+      blue: "#0060c4"
       yellow: "#e2fe5b"
-      cyan: "#347872"
+      cyan: "#256da3"
       purple: "#835a82"
 
     foreground:
@@ -37,7 +37,7 @@ common:
 
       red: "#790a0a"
       green: "#025d00"
-      blue: "#1f3fe6"
+      blue: "#024386"
       yellow: "#443f04"
       cyan: "#0c3350"
       purple: "#451843"
@@ -52,9 +52,9 @@ common:
 
         red: "#d04646"
         green: "#60bd5c"
-        blue: "#63a2bd"
+        blue: "#0060c4"
         yellow: "#e2fe5b"
-        cyan: "#1470b4"
+        cyan: "#256da3"
         purple: "#7e297b"
 
       foreground:
@@ -65,7 +65,7 @@ common:
 
         red: "#d71e1e"
         green: "#04b000"
-        blue: "#1f3fe6"
+        blue: "#024386"
         yellow: "#b2d410"
         cyan: "#0c3350"
         purple: "#461344"
@@ -86,6 +86,7 @@ dark:
   fg_focus: "$foreground.focus"
   fg_urgent: "$foreground.urgent"
   fg_minimize: "$foreground.minimize"
+  hotkeys_modifiers_fg: "$foreground.blue"
 
   border_normal: "$background.normal"
   border_focus: "$background.focus"

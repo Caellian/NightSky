@@ -1,10 +1,15 @@
-latestVersion: "0.0.4"
+latestVersion: "0.0.5"
 versionHistory:
+  - major: 0
+    minor: 0
+    patch: 5
+    main: "RAM overload"
+    description: "- Added CPU & RAM widgets.\n- Added shutdown menu to battery arc.\n- Changed a few theme colors."
   - major: 0
     minor: 0
     patch: 4
     main: "Fixes"
-    description: "- Fixed widgets.\n-Fixed keyboard shortcuts."
+    description: "- Fixed widgets.\n- Fixed keyboard shortcuts."
   - major: 0
     minor: 0
     patch: 3

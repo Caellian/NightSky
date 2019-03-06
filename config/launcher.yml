@@ -1,7 +1,7 @@
 children:
   Applications:
     Atom: "atom"
-    Firefox: "firefox"
+    Firefox: "firefox www.duckduckgo.com"
     Firefox (Private window): "firefox --private-window www.duckduckgo.com"
     Package Manager: "$package_manager"
     Terminal: "$terminal"
@@ -9,8 +9,4 @@ children:
     Hotkeys: "#hotkeys"
     Edit: "$editor ~/.config/awesome"
     Restart: "#restart"
-  System:
-    Log out: "xfce4-terminal -x kill $(pidof xfce4-session)"
-    Shutdown: "shutdown -P now"
-    Reboot: "reboot"
-    Halt: "shutdown -H now"
+  End Session: "$session_logout"
